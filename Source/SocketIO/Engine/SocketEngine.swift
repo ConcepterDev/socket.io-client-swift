@@ -288,7 +288,8 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
         ws?.enableCompression = compress
         ws?.disableSSLCertValidation = selfSigned
         ws?.security = security?.security
-
+        ws?.request.timeoutInterval = 2
+        
         ws?.onConnect = {[weak self] in
             guard let this = self else { return }
 
